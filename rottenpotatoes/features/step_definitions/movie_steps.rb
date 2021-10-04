@@ -19,7 +19,9 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
+  # page.body.index(e1).should < page.body.index(e2)
+  expect(page.body.index(e1)).to be < page.body.index(e2)
+  # fail "Unimplemented"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -55,7 +57,9 @@ Then /I should see all the movies: (.*)/ do |rating_list|
   end
   
   real_count = page.all("tr").count - 1
-  real_count.should == expect_count
+  
+  expect(real_count).to be == (expect_count)
+  # real_count.should == expect_count
 end
 
 
